@@ -1,0 +1,203 @@
+/* --- CUSTOM FONT INTEGRATION (Imbue) --- */
+@font-face {
+  font-family: 'Imbue';
+  src: url('./Imbue-VariableFont_opsz,wght.ttf') format('truetype');
+  font-weight: 100 900;
+  font-style: normal;
+}
+
+/* --- EDITABLE FONT SIZES & VARIABLES --- */
+:root {
+  --font-main: 'Imbue', Georgia, serif;
+  
+  /* Font Sizes */
+  --size-main-name: 3.5rem;
+  --size-subtitle: 2rem;
+  --size-years: 1.6rem;
+  --size-hero-links: 1.2rem;
+  --size-about-header: 1.8rem;
+  --size-project-item: 36pt; /* Explicitly set to 36pt */
+  
+  /* Colors */
+  --color-white-text: #ffffff;
+  --color-pink-text: #e58ca8;
+  --color-dark-pink: #d8698b;
+}
+
+/* --- RESET & BASE STYLES --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  font-family: var(--font-main);
+  background-color: #f2f0eb;
+}
+
+/* --- FIXED BACKGROUND IMAGE --- */
+.fixed-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('./Artboard 1.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* --- WHITE FADE OVERLAY ON SCROLL --- */
+.white-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  opacity: 0;
+  z-index: 1;
+  pointer-events: none;
+  transition: opacity 0.1s linear;
+}
+
+/* --- CONTENT CONTAINER --- */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+  min-height: 90vh;
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 5vw;
+}
+
+.hero-title-box {
+  text-align: left;
+}
+
+.main-name {
+  font-size: var(--size-main-name);
+  font-weight: 300;
+  color: var(--color-white-text);
+  margin-bottom: 0.8rem;
+  line-height: 1.1;
+  letter-spacing: 0.02em;
+}
+
+.subtitle {
+  font-size: var(--size-subtitle);
+  font-weight: 300;
+  color: var(--color-white-text);
+  line-height: 1.2;
+}
+
+.years {
+  font-size: var(--size-years);
+  color: var(--color-white-text);
+}
+
+/* --- HERO LINKS (BOTTOM LEFT) --- */
+.hero-links {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.hero-links a {
+  font-size: var(--size-hero-links);
+  color: var(--color-dark-pink);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: opacity 0.2s ease;
+  width: fit-content;
+}
+
+.hero-links .email-link {
+  text-transform: lowercase !important;
+}
+
+.hero-links a:hover {
+  opacity: 0.6;
+}
+
+/* --- PROJECTS SECTION --- */
+.projects-section {
+  padding-top: 10rem;
+  padding-bottom: 8rem;
+  min-height: 100vh;
+}
+
+.section-header {
+  margin-bottom: 3.5rem;
+}
+
+.about-me-link {
+  font-size: var(--size-about-header);
+  color: #a89f91;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+.about-me-link:hover {
+  color: var(--color-dark-pink);
+}
+
+.project-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.project-item {
+  font-size: var(--size-project-item); /* 36pt */
+  color: var(--color-pink-text);
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.project-item:hover {
+  color: var(--color-dark-pink);
+  transform: translateX(10px);
+}
+
+/* --- RESPONSIVE DESIGN --- */
+@media (max-width: 768px) {
+  .hero-section {
+    justify-content: center;
+    padding-right: 0;
+  }
+  
+  .hero-links {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-top: 4rem;
+  }
+
+  .project-item {
+    font-size: 24pt; /* Mobile adjustment */
+  }
+}
